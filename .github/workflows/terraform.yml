@@ -66,18 +66,11 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
-            echo "this is end after plan from Tomasz"
 
       - name: Terraform Plan Status
-        with:
-          script: |
-            echo "this should show up in Plan status"
         if: steps.plan.outcome == 'failure'
         run: exit 1
 
       - name: Terraform Apply
-        with:
-          script: |
-            echo "this should show up"
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
