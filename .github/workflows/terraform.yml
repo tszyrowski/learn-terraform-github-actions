@@ -66,7 +66,6 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
-            echo "this is end after plan from Tomasz"
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
